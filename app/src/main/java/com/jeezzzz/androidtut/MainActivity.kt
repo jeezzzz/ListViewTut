@@ -6,6 +6,10 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class MainActivity : AppCompatActivity() {
     lateinit var UserArrayList:ArrayList<User>
@@ -13,11 +17,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listView=findViewById<ListView>(R.id.listView)
-        val name= arrayOf("Ajeesh Rawal","Innogeeks","Shubh Agarwal","Ansh Singh","Parth Aggarwal","Kshitiz Aggarwal")
-        val lastMsg= arrayOf("hii","class @5","yes we'll go","ui check kar","done np","hello?")
-        val lastMsgTime= arrayOf("5:30 AM","4:30 PM","5:30 AM","4:30 PM","5:30 AM","4:30 PM")
-        val imageId= intArrayOf(R.drawable.pic1,R.drawable.pic2,R.drawable.pic3,R.drawable.pic4,R.drawable.pic5,R.drawable.pic6,)
+        val recyclerView=findViewById<RecyclerView>(R.id.recycler)
+        recyclerView.layoutManager=LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,true)
+        val name= arrayOf("Ajeesh Rawal","Innogeeks","Shubh Agarwal","Ansh Singh","Parth Aggarwal","Kshitiz Aggarwal","Ajeesh Rawal","Innogeeks","Shubh Agarwal","Ansh Singh","Parth Aggarwal","Kshitiz Aggarwal")
+        val lastMsg= arrayOf("hii","class @5","yes we'll go","ui check kar","done np","hello?","hii","class @5","yes we'll go","ui check kar","done np","hello?")
+        val lastMsgTime= arrayOf("5:30 AM","4:30 PM","5:30 AM","4:30 PM","5:30 AM","4:30 PM","5:30 AM","4:30 PM","5:30 AM","4:30 PM","5:30 AM","4:30 PM")
+        val imageId= intArrayOf(R.drawable.pic1,R.drawable.pic2,R.drawable.pic3,R.drawable.pic4,R.drawable.pic5,R.drawable.pic6,R.drawable.pic1,R.drawable.pic2,R.drawable.pic3,R.drawable.pic4,R.drawable.pic5,R.drawable.pic6,)
 
         UserArrayList=ArrayList()
 
@@ -29,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        listView.isClickable=true
-        listView.adapter=MyAdapter(this,UserArrayList)
+
+        recyclerView.adapter=MyAdapter(this,UserArrayList)
 
     }
 }
